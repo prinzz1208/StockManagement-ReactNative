@@ -1,23 +1,38 @@
 import React from 'react';
-import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  TextStyle,
+  View,
+} from 'react-native';
+import { Modify } from '../../utils/type-utils';
 import { Colors } from '../colors';
 
-export type InputProps = TextInputProps;
-export const Input: React.FC<InputProps> = ({ style, ...rest }) => {
+export type InputProps = Modify<
+  TextInputProps,
+  { innerStyle?: StyleProp<TextStyle> }
+>;
+export const Input: React.FC<InputProps> = ({ style, innerStyle, ...rest }) => {
   return (
-    <View style={inputContainer.textInput}>
-      <TextInput style={style} {...rest} />
+    <View style={[inputContainer.textInputContainer, style]}>
+      <TextInput style={[inputContainer.textInput, innerStyle]} {...rest} />
     </View>
   );
 };
 
 const inputContainer = StyleSheet.create({
+  textInputContainer: {
+    backgroundColor: Colors.White,
+    borderWidth: 1,
+    borderColor: Colors.Primary,
+    borderRadius: 10,
+    marginHorizontal: 10,
+    textAlign: 'center',
+  },
   textInput: {
     height: 55,
-    backgroundColor: Colors.White,
-    borderWidth: 10,
-    borderColor: Colors.Primary,
-    borderRadius: 3,
-    marginHorizontal: 10,
+    paddingHorizontal: 10,
   },
 });
