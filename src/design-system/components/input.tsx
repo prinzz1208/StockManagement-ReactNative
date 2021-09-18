@@ -6,29 +6,51 @@ import {
   TextInputProps,
   TextStyle,
   View,
+  Text,
+  TextProps,
 } from 'react-native';
 import { Modify } from '../../utils/type-utils';
 import { Colors } from '../colors';
 
 export type InputProps = Modify<
   TextInputProps,
-  { innerStyle?: StyleProp<TextStyle> }
+  { innerStyle?: StyleProp<TextStyle>; label?: string; required?: boolean }
 >;
-export const Input: React.FC<InputProps> = ({ style, innerStyle, ...rest }) => {
+export const Input: React.FC<InputProps> & {
+  Label: React.FC<TextProps>;
+} = ({ style, innerStyle, label, required, ...rest }) => {
   return (
-    <View style={[inputContainer.textInputContainer, style]}>
-      <TextInput style={[inputContainer.textInput, innerStyle]} {...rest} />
+    <View style={[inputStyles.inputContainer, style]}>
+      {label && (
+        <Input.Label style={inputStyles.label}>
+          <Text>{label}</Text>
+          {required && <Text style={inputStyles.required}>*</Text>}
+        </Input.Label>
+      )}
+      <View style={[inputStyles.textInputContainer]}>
+        <TextInput style={[inputStyles.textInput, innerStyle]} {...rest} />
+      </View>
     </View>
   );
 };
 
-const inputContainer = StyleSheet.create({
+const inputStyles = StyleSheet.create({
+  inputContainer: {},
+  label: {
+    flexDirection: 'row',
+    marginLeft: 2,
+    marginBottom: 2,
+  },
+  required: {
+    marginLeft: 2,
+    color: Colors.Red,
+    alignItems: 'center',
+  },
   textInputContainer: {
     backgroundColor: Colors.White,
     borderWidth: 1,
     borderColor: Colors.Primary,
     borderRadius: 10,
-    marginHorizontal: 10,
     textAlign: 'center',
   },
   textInput: {
@@ -36,3 +58,5 @@ const inputContainer = StyleSheet.create({
     paddingHorizontal: 10,
   },
 });
+
+Input.Label = ({ children, ...rest }) => <Text {...rest}>{children}</Text>;

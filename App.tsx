@@ -1,15 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import Constants from 'expo-constants';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import { Login } from './src/screens/login';
+import { StyleSheet } from 'react-native';
 import { Colors } from './src/design-system';
+import { NavigationRoutes, Stack } from './src/navigation';
+import { Login, SignUp, Products } from './src/screens';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Login />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name={NavigationRoutes.Login} component={Login} />
+        <Stack.Screen name={NavigationRoutes.SignUp} component={SignUp} />
+        <Stack.Screen name={NavigationRoutes.Products} component={Products} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
