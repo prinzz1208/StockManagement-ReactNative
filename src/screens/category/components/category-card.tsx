@@ -2,23 +2,23 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Colors } from '../../../design-system';
 
-export enum ProductType {
+export enum CategoryType {
   Phone = 'Phone',
   TV = 'TV',
 }
-type ProductCardProps = {
-  type: ProductType;
+type CategoryCardProps = {
+  type: CategoryType;
   count: number;
   dateIn: string;
   brandsCount: number;
 };
-export const ProductCard: React.FC<ProductCardProps> = ({
+export const CategoryCard: React.FC<CategoryCardProps> = ({
   count,
   dateIn,
   brandsCount,
 }) => {
   return (
-    <View style={styles.productCard}>
+    <View style={styles.categoryCard}>
       <View style={styles.col}>
         <Text>Image</Text>
       </View>
@@ -42,7 +42,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 };
 
 const styles = StyleSheet.create({
-  productCard: {
+  categoryCard: {
     width: 334,
     height: 112,
     flexDirection: 'row',

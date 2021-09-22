@@ -25,7 +25,7 @@ export const Login: React.FC<LoginProps> = ({ navigation }) => {
       <Button
         textStyle={styles.btnText}
         text="Login"
-        onPress={() => navigation.navigate(NavigationRoutes.Products)}
+        onPress={() => navigation.navigate(NavigationRoutes.Categories)}
       />
       <Button
         style={styles.signupBtn}

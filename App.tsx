@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Colors } from './src/design-system';
 import { NavigationRoutes, Stack } from './src/navigation';
-import { Login, SignUp, Products } from './src/screens';
+import { Login, SignUp, Categories, AddCategory } from './src/screens';
 
 export default function App() {
   return (
@@ -11,7 +11,14 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name={NavigationRoutes.Login} component={Login} />
         <Stack.Screen name={NavigationRoutes.SignUp} component={SignUp} />
-        <Stack.Screen name={NavigationRoutes.Products} component={Products} />
+        <Stack.Screen
+          name={NavigationRoutes.Categories}
+          component={Categories}
+        />
+        <Stack.Screen
+          name={NavigationRoutes.CategoryAddition}
+          component={AddCategory}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
