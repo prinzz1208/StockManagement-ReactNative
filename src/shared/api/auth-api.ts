@@ -12,12 +12,10 @@ export type LoginResponse = {
   type: string;
 };
 
-export const loginRequest = async (
-  payload: LoginRequestPayload
-): Promise<ApiResponse<LoginResponse>> =>
+export const loginRequest = async (payload: LoginRequestPayload) =>
   await api.post('/users/login', payload);
 
 export const useLoginRequest = () =>
-  useMutation<ApiResponse<LoginResponse>, ApiErrorResponse, any>(
+  useMutation<any, ApiErrorResponse, any>(
     async (payload: LoginRequestPayload) => loginRequest(payload)
   );

@@ -16,31 +16,31 @@ api.interceptors.request.use(async (req) => {
 
 api.interceptors.response.use(
   (res) => res.data,
-  (error): Promise<ApiErrorResponse> => {
-    let err: ApiErrorResponse;
+  (error) => {
+    // let err: any;
 
-    if (isCustomError(error)) {
-      err = error.response.data;
-      if (err.meta.type === ApiErrorType.Authorization) {
-        if (!TokenManager.getToken()) {
-          logout();
-        }
-      }
-    } else {
-      err = {
-        meta: {
-          type: ApiErrorType.Authorization,
-          status_code: 400,
-          message: 'System Error',
-          details: [],
-        },
-        data: {},
-      };
-    }
-    return Promise.reject(err);
+    // if (isCustomError(error)) {
+    //   err = error.response.data;
+    //   if (err.meta.type === ApiErrorType.Authorization) {
+    //     if (!TokenManager.getToken()) {
+    //       logout();
+    //     }
+    //   }
+    // } else {
+    //   err = {
+    //     meta: {
+    //       type: ApiErrorType.Authorization,
+    //       status_code: 400,
+    //       message: 'System Error',
+    //       details: [],
+    //     },
+    //     data: {},
+    //   };
+    // }
+    return Promise.reject(error);
   }
 );
 export default api;
 
-const isCustomError = (error: AxiosError<ApiErrorResponse>) =>
-  !!error.response?.data.meta.type;
+// const isCustomError = (error: AxiosError<ApiErrorResponse>) =>
+//   !!error.response?.data.meta.type;

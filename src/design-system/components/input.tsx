@@ -12,10 +12,11 @@ import {
 import { Modify } from '../../utils/type-utils';
 import { Colors } from '../colors';
 
-export type InputProps = Modify<
+type InputProps = Modify<
   TextInputProps,
   { innerStyle?: StyleProp<TextStyle>; label?: string; required?: boolean }
 >;
+
 export const Input: React.FC<InputProps> & {
   Label: React.FC<TextProps>;
 } = ({ style, innerStyle, label, required, ...rest }) => {
