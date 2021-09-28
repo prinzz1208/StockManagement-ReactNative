@@ -6,10 +6,11 @@ import { Button } from './button';
 type AddButtonProps = {
   onPress: () => void;
 };
+
 export const AddButton: React.FC<AddButtonProps> = ({ onPress }) => {
   return (
     <Button
-      style={styles.addProductButton}
+      style={styles.addButton}
       text="+"
       textStyle={styles.textStyle}
       onPress={onPress}
@@ -18,7 +19,7 @@ export const AddButton: React.FC<AddButtonProps> = ({ onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  addProductButton: {
+  addButton: {
     backgroundColor: Colors.Primary,
     position: 'absolute',
     bottom: 25,

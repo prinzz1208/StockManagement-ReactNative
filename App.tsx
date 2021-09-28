@@ -4,7 +4,14 @@ import { StyleSheet } from 'react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Colors } from './src/design-system';
 import { NavigationRoutes, Stack } from './src/navigation';
-import { Login, SignUp, Categories, AddCategory } from './src/screens';
+import {
+  Login,
+  SignUp,
+  Categories,
+  AddCategory,
+  AddProduct,
+  Products,
+} from './src/screens';
 
 const queryClient = new QueryClient();
 export default function App() {
@@ -14,14 +21,26 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name={NavigationRoutes.Login} component={Login} />
           <Stack.Screen name={NavigationRoutes.SignUp} component={SignUp} />
-          <Stack.Screen
-            name={NavigationRoutes.Categories}
-            component={Categories}
-          />
-          <Stack.Screen
-            name={NavigationRoutes.CategoryAddition}
-            component={AddCategory}
-          />
+          <Stack.Group>
+            <Stack.Screen
+              name={NavigationRoutes.Categories}
+              component={Categories}
+            />
+            <Stack.Screen
+              name={NavigationRoutes.CategoryAddition}
+              component={AddCategory}
+            />
+          </Stack.Group>
+          <Stack.Group>
+            <Stack.Screen
+              name={NavigationRoutes.Products}
+              component={Products}
+            />
+            <Stack.Screen
+              name={NavigationRoutes.ProductAddition}
+              component={AddProduct}
+            />
+          </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>

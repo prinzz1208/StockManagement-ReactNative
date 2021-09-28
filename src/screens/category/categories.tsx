@@ -6,6 +6,7 @@ import { Colors } from '../../design-system';
 import { AddButton } from '../../design-system/components';
 import { NavigationRoutes, RootStackParamList } from '../../navigation';
 import { CategoryCard, CategoryType } from './components/category-card';
+import { SearchBar } from './components/search-bar';
 type CategoriesProps = NativeStackScreenProps<
   RootStackParamList,
   NavigationRoutes.Categories
@@ -15,14 +16,19 @@ export const Categories: React.FC<CategoriesProps> = ({ navigation }) => {
   const onPress = () => {
     navigation.navigate(NavigationRoutes.CategoryAddition);
   };
+
+  const onCategoryClicked = () => {
+    navigation.navigate(NavigationRoutes.Products);
+  };
   return (
     <View style={styles.categoryContainer}>
-      <Text></Text>
+      <SearchBar />
       <CategoryCard
         type={CategoryType.Phone}
         count={0}
         dateIn={'24/Feb/2020'}
         brandsCount={24}
+        onPress={onCategoryClicked}
       />
       <AddButton onPress={onPress} />
     </View>

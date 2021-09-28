@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
   addCategoryInput: {
     marginTop: 63,
+    width: '85%',
   },
   addCategoryBtn: {
     position: 'absolute',

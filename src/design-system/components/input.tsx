@@ -8,18 +8,24 @@ import {
   View,
   Text,
   TextProps,
+  ViewStyle,
 } from 'react-native';
 import { Modify } from '../../utils/type-utils';
 import { Colors } from '../colors';
 
 type InputProps = Modify<
   TextInputProps,
-  { innerStyle?: StyleProp<TextStyle>; label?: string; required?: boolean }
+  {
+    innerContainerStyle?: StyleProp<ViewStyle>;
+    innerStyle?: StyleProp<TextStyle>;
+    label?: string;
+    required?: boolean;
+  }
 >;
 
 export const Input: React.FC<InputProps> & {
   Label: React.FC<TextProps>;
-} = ({ style, innerStyle, label, required, ...rest }) => {
+} = ({ style, innerStyle, label, required, innerContainerStyle, ...rest }) => {
   return (
     <View style={[inputStyles.inputContainer, style]}>
       {label && (
@@ -28,7 +34,7 @@ export const Input: React.FC<InputProps> & {
           {required && <Text style={inputStyles.required}>*</Text>}
         </Input.Label>
       )}
-      <View style={[inputStyles.textInputContainer]}>
+      <View style={[inputStyles.textInputContainer, innerContainerStyle]}>
         <TextInput style={[inputStyles.textInput, innerStyle]} {...rest} />
       </View>
     </View>

@@ -5,6 +5,8 @@ export type RootStackParamList = {
   [NavigationRoutes.SignUp]: undefined;
   [NavigationRoutes.Categories]: undefined;
   [NavigationRoutes.CategoryAddition]: undefined;
+  [NavigationRoutes.Products]: undefined;
+  [NavigationRoutes.ProductAddition]: undefined;
 };
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -14,4 +16,6 @@ export enum NavigationRoutes {
   SignUp = 'SignUp',
   Categories = 'Categories',
   CategoryAddition = 'CategoryAddition',
+  Products = 'Products',
+  ProductAddition = 'ProductAddition',
 }

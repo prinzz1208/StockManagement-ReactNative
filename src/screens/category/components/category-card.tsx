@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableWithoutFeedback } from 'react-native';
 import { Colors } from '../../../design-system';
 
 export enum CategoryType {
@@ -11,14 +11,20 @@ type CategoryCardProps = {
   count: number;
   dateIn: string;
   brandsCount: number;
+  onPress: () => void;
 };
 export const CategoryCard: React.FC<CategoryCardProps> = ({
   count,
   dateIn,
   brandsCount,
+  onPress,
 }) => {
   return (
-    <View style={styles.categoryCard}>
+    <View
+      style={styles.categoryCard}
+      onStartShouldSetResponder={() => true}
+      onResponderStart={onPress}
+    >
       <View style={styles.col}>
         <Text>Image</Text>
       </View>
@@ -26,13 +32,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
       <View style={styles.col}>
         <Text style={styles.colHead}>Count</Text>
         <Text style={styles.colValue}>{count}</Text>
-      </View>{' '}
+      </View>
       <View style={styles.col}>
         <Text style={styles.colHead}>Date In</Text>
         <Text style={[styles.colValue, styles.dateIn]}>
           {dateIn.split('/').join(' ').toString()}
         </Text>
-      </View>{' '}
+      </View>
       <View style={styles.col}>
         <Text style={styles.colHead}>Brands</Text>
         <Text style={styles.colValue}>{brandsCount}</Text>
