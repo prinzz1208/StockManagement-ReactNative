@@ -14,6 +14,8 @@ export const AddCategory: React.FC<AddCategoryProps> = ({ navigation }) => {
   return (
     <View style={styles.addCategoryContainer}>
       <Input label="Category Type" style={styles.addCategoryInput} required />
+      <Input label="Count" style={styles.addCategoryInput} required />
+      <Input label="Brands Count" style={styles.addCategoryInput} required />
       <Button
         text="Add Category"
         style={styles.addCategoryBtn}
